@@ -7,22 +7,4 @@ interface baseDAO {
     public function update($entity);
     public function delete($id);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
