@@ -1,6 +1,6 @@
 <footer>
 
-        radape da pagina
+        RODAPE DA PAGINA
 
 </footer>
 
