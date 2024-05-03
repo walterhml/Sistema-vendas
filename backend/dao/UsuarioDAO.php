@@ -1,6 +1,7 @@
 <?php
-require_once '../config/Database.php';
-require_once '../entity/Usuario.php';
+require_once 'config/Database.php';
+require_once 'entity/Usuario.php';
+require_once 'BaseDAO.php';
 
 class UsuarioDAO implements baseDAO {
     
@@ -39,20 +40,16 @@ class UsuarioDAO implements baseDAO {
             $stmt = $this->db->prepare($sql);    
             $stmt->execute();
             $usuarios = $stmt->fetch(PDO::FETCH_ASSOC);
-            return array_map()
-
-
-
-            return $usuario ?
-             new Usuario($usuario['id'],
-              $usuario['NomeUsuario'],
-               $usuario['Senha'],
-                $usuario['Email'],
-                 $usuario['GrupoUsuarioID'],
-                  $usuario['ativo'],
-                   $usuario['DataCriacao'],
-                    $usuario['DataAtualizacao'])
-                    :null;
+            return array_map(function ($usuario) {
+                return  new Usuario($usuario['id'],
+                $usuario['NomeUsuario'],
+                 $usuario['Senha'],
+                  $usuario['Email'],
+                   $usuario['GrupoUsuarioID'],
+                    $usuario['ativo'],
+                     $usuario['DataCriacao'],
+                      $usuario['DataAtualizacao']);
+                }, $usuarios);
             } catch (PDOException $e) {
                 return null;
             }
