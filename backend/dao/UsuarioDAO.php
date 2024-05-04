@@ -101,7 +101,35 @@ class UsuarioDAO implements BaseDAO {
     }
 
     public function update($usuario) {
+        try {
+            // Verifico se o usuário existe no banco de dados
+            $existingUser = $this->getById($usuario->getId());
 
+            if(!$existingUser) {
+                return false;// Retorna falso se o usuário não existir
+            }
+
+            $sql = "UPDATE Usuario SET NomeUsuario = :nomeUsuario, Senha = :senha, Email = :email,
+            GrupoUsuarioID = :grupoUsuarioID, Ativo = :ativo, DataAtualizacao = current_timestamp()
+            WHERE Id = :id";
+
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->bindParam(':id', $usuario->getId());
+            $stmt->bindParam(':nomeUsuario', $usuario->getNomeUsuario());
+            $stmt->bindParam(':senha', $usuario->getSenha());
+            $stmt->bindParam(':email', $usuario->getEmail());
+            $stmt->bindParam(':grupoUsuarioID', $usuario->getGrupoUsuarioId());
+            $stmt->bindParam(':ativo', $usuario->getAtivo());
+
+            $stmt->execute();
+
+            return true;
+
+        } catch (PDOException $e) {
+            // TO-DO: implementar log
+            return false;
+        }
     }
 
     public function delete($id) {
@@ -110,7 +138,7 @@ class UsuarioDAO implements BaseDAO {
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            
+
         } catch (PDOException $e) {
             return false;
         }
