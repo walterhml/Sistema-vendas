@@ -122,6 +122,12 @@ class UsuarioDAO implements BaseDAO {
             WHERE Id = :id";
 
             $stmt = $this->db->prepare($sql);
+            $id = $usuario->getId();
+            $nome = $usuario->getNomeUsuario();
+            $senha = $usuario->getSenha();
+            $email = $usuario->getEmail();
+            $grupoUsuarioID = $usuario->getGrupoUsuarioId();
+            $ativo = $usuario->getAtivo();
 
             $stmt->bindParam(':id', $usuario->getId());
             $stmt->bindParam(':nomeUsuario', $usuario->getNomeUsuario());
