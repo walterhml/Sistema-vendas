@@ -54,7 +54,7 @@ class Usuario {
     public function getDataAtualizacao() {
         return $this->dataAtualizacao;
     }
-    
+
     // Setters
 }
 ?>
