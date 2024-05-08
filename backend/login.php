@@ -30,11 +30,11 @@ require_once("template/header.php");
                 <input type="email" class="form-control" id="new_email" required>
             </div>
             <div class="mb-3">
-                <label for="new_password" class="form-label">Password</label>
+                <label for="new_password" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="new_password" required>
             </div>
             <div class="mb-3">
-                <label for="confirm_password" class="form-label">Confimar Senha</label>
+                <label for="confirm_password" class="form-label">Confirmar Senha</label>
                 <input type="password" class="form-control" id="confirm_password" required>
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
