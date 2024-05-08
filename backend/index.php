@@ -1,25 +1,23 @@
 <?php
-    require_once("template/header.php");
-    require_once 'dao/UsuarioDAO.php';
-    require_once 'entity/Usuario.php';
-
-    $usuarioDao = new UsuarioDAO();
-    //echo $usuarioDao->getById(1)->getNomeUsuario();
-    // print_r($usuarioDao->getAll());
-
-    // $novoUsuario = new Usuario(null, "novo usuario B", "1234aerqe", "novouser@mail.com", null, 1);
-    // echo $novoUsuario->getNomeUsuario();
-
-    // $usuarioDao->create($novoUsuario);
-    $novoUsuario = new Usuario(2, "walther", "1234aerqe", "novouser@mail.com", null, 1);
-    $usuarioDao->update($novoUsuario);
-  
-    $usuarioDao->delete(2);
-
+require_once("template/header.php");
 ?>
-    <h1>Olá Sistema Vendas Body</h1>
-</body>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <?php for ($i = 0; $i < 6; $i++) : ?>
+            <div class="col">
+                <div class="card">
+                    <img src="img/produtos.webp" class="card-img-top" alt="produtos">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        <?php endfor; ?>
+    </div>
+</div>
 
 <?php
-    require_once("template/footer.php");
+require_once("template/footer.php");
 ?>
